@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillScape - Kuis Keamanan Siber</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="kuis.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i data-lucide="shield-check"></i>
+          <span>SkillScape</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="materi.html" class="nav-item">
+            <i data-lucide="book-open"></i>
+            <span>Materi</span>
+          </a>
+          <a href="simulasi.html" class="nav-item">
+            <i data-lucide="terminal"></i>
+            <span>Simulasi</span>
+          </a>
+          <a href="kuis.html" class="nav-item active">
+            <i data-lucide="pen-tool"></i>
+            <span>Kuis</span>
+          </a>
+          <a href="progress.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            <span>Progress</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item">
+            <i data-lucide="settings"></i>
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="kuis-header">
+          <h1>📝 Kuis Pengetahuan</h1>
+          <p>Uji pemahaman Anda tentang keamanan siber</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="kuis-stats">
+          <div class="stat-kuis-card">
+            <i data-lucide="help-circle"></i>
+            <div class="stat-value" id="totalSoal">0</div>
+            <div class="stat-label">Total Soal</div>
+          </div>
+          <div class="stat-kuis-card">
+            <i data-lucide="check-circle"></i>
+            <div class="stat-value" id="soalTerjawab">0</div>
+            <div class="stat-label">Terjawab</div>
+          </div>
+          <div class="stat-kuis-card">
+            <i data-lucide="award"></i>
+            <div class="stat-value" id="skorSaatIni">0</div>
+            <div class="stat-label">Skor Saat Ini</div>
+          </div>
+          <div class="stat-kuis-card">
+            <i data-lucide="clock"></i>
+            <div class="stat-value" id="waktuTersisa">00:00</div>
+            <div class="stat-label">Waktu Tersisa</div>
+          </div>
+        </div>
+
+        <!-- Category Selection -->
+        <div class="kuis-category">
+          <button class="category-kuis-btn active" data-category="all">
+            <i data-lucide="grid"></i> Semua Topik
+          </button>
+          <button class="category-kuis-btn" data-category="dasar">
+            <i data-lucide="shield"></i> Dasar
+          </button>
+          <button class="category-kuis-btn" data-category="keamanan">
+            <i data-lucide="lock"></i> Keamanan
+          </button>
+          <button class="category-kuis-btn" data-category="lanjutan">
+            <i data-lucide="trending-up"></i> Lanjutan
+          </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-wrapper">
+          <div class="quiz-progress-bar">
+            <div
+              class="progress-fill-big"
+              id="progressFillBig"
+              style="width: 0%"
+            ></div>
+          </div>
+
+          <div class="quiz-card">
+            <div class="quiz-card-header">
+              <div class="quiz-category-badge" id="quizCategoryBadge">
+                Dasar
+              </div>
+              <div class="quiz-question-counter">
+                Soal <span id="currentSoalNum">1</span> dari
+                <span id="totalSoalNum">0</span>
+              </div>
+            </div>
+
+            <div class="quiz-question-text" id="questionText">
+              Memuat pertanyaan...
+            </div>
+
+            <div class="quiz-options-list" id="optionsList"></div>
+
+            <div class="quiz-feedback" id="quizFeedback"></div>
+
+            <div class="quiz-navigation">
+              <button class="quiz-nav-btn prev" id="prevBtn" disabled>
+                <i data-lucide="arrow-left"></i> Sebelumnya
+              </button>
+              <button class="quiz-nav-btn next" id="nextBtn">
+                Selanjutnya <i data-lucide="arrow-right"></i>
+              </button>
+              <button
+                class="quiz-submit-btn"
+                id="submitBtn"
+                style="display: none"
+              >
+                <i data-lucide="send"></i> Selesaikan Kuis
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Result Modal -->
+    <!-- Result Modal - Enhanced Version -->
+    <div id="resultModal" class="result-modal-kuis">
+      <div class="result-content-kuis">
+        <button class="result-close" id="closeResultBtn">&times;</button>
+
+        <div class="result-header">
+          <div class="result-icon" id="resultIcon">
+            <i data-lucide="award"></i>
+          </div>
+          <div class="result-title" id="resultTitle">Hasil Kuis</div>
+        </div>
+
+        <div class="result-score-section">
+          <div class="result-score" id="resultScore">0/0</div>
+          <div class="result-percentage" id="resultPercentage">0%</div>
+        </div>
+
+        <div class="result-message" id="resultMessage"></div>
+
+        <div class="result-stats-grid">
+          <div class="result-stat">
+            <i data-lucide="help-circle"></i>
+            <div class="result-stat-value" id="resultTotalSoal">0</div>
+            <div class="result-stat-label">Total Soal</div>
+          </div>
+          <div class="result-stat">
+            <i data-lucide="check-circle"></i>
+            <div class="result-stat-value" id="resultBenar">0</div>
+            <div class="result-stat-label">Benar</div>
+          </div>
+          <div class="result-stat">
+            <i data-lucide="x-circle"></i>
+            <div class="result-stat-value" id="resultSalah">0</div>
+            <div class="result-stat-label">Salah</div>
+          </div>
+          <div class="result-stat">
+            <i data-lucide="clock"></i>
+            <div class="result-stat-value" id="resultWaktu">00:00</div>
+            <div class="result-stat-label">Waktu</div>
+          </div>
+        </div>
+
+        <!-- Detail Jawaban -->
+        <div class="result-detail-section">
+          <div class="result-detail-title">
+            <i data-lucide="list-checks"></i>
+            <span>Rangkuman Jawaban</span>
+          </div>
+          <div class="result-detail-list" id="resultDetailList">
+            <!-- Akan diisi JavaScript -->
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="result-btn secondary" id="retryQuizBtn">
+            <i data-lucide="refresh-cw"></i> Coba Lagi
+          </button>
+          <button class="result-btn primary" id="backToKuisBtn">
+            <i data-lucide="home"></i> Kembali
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Konfirmasi Mulai Kuis Modal -->
+    <div id="startQuizModal" class="start-quiz-modal">
+      <div class="start-quiz-content">
+        <div class="start-quiz-icon">
+          <i data-lucide="clipboard-list"></i>
+        </div>
+        <h2>📋 Siap Memulai Kuis?</h2>
+        <p>
+          Kuis ini terdiri dari <strong id="totalSoalKonfirmasi">0</strong> soal
+          dengan waktu pengerjaan <strong>10 menit</strong>.
+        </p>
+        <div class="quiz-rules">
+          <div class="rule-item">
+            <i data-lucide="clock"></i>
+            <span>Waktu pengerjaan: 10 menit</span>
+          </div>
+          <div class="rule-item">
+            <i data-lucide="check-circle"></i>
+            <span>Tidak ada pengurangan nilai untuk jawaban salah</span>
+          </div>
+          <div class="rule-item">
+            <i data-lucide="repeat"></i>
+            <span>Bisa navigasi antar soal</span>
+          </div>
+          <div class="rule-item">
+            <i data-lucide="award"></i>
+            <span>Skor akan tersimpan ke progres Anda</span>
+          </div>
+        </div>
+        <div class="start-quiz-actions">
+          <button class="start-quiz-btn cancel" id="cancelStartBtn">
+            Batal
+          </button>
+          <button class="start-quiz-btn confirm" id="confirmStartBtn">
+            Mulai Kuis →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peringatan Waktu Habis Modal -->
+    <div id="timeoutModal" class="timeout-modal">
+      <div class="timeout-content">
+        <div class="timeout-icon">
+          <i data-lucide="alert-triangle"></i>
+        </div>
+        <h2>⏰ Waktu Habis!</h2>
+        <p>Maaf, waktu pengerjaan kuis telah berakhir.</p>
+        <div class="timeout-stats">
+          <div class="timeout-stat-item">
+            <span class="timeout-label">Soal Terjawab:</span>
+            <span class="timeout-value" id="timeoutTerjawab">0</span>
+          </div>
+          <div class="timeout-stat-item">
+            <span class="timeout-label">Skor Akhir:</span>
+            <span class="timeout-value" id="timeoutSkor">0</span>
+          </div>
+        </div>
+        <button class="timeout-btn" id="timeoutCloseBtn">Lihat Hasil</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="kuis.js"></script>
+  </body>
+</html>

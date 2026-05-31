@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillScape - Dashboard Cyber Security</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i data-lucide="shield-check"></i>
+          <span>SkillScape</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="materi.html" class="nav-item">
+            <i data-lucide="book-open"></i>
+            <span>Materi</span>
+          </a>
+          <a href="simulasi.html" class="nav-item">
+            <i data-lucide="terminal"></i>
+            <span>Simulasi</span>
+          </a>
+          <a href="kuis.html" class="nav-item">
+            <i data-lucide="pen-tool"></i>
+            <span>Kuis</span>
+          </a>
+          <a href="progress.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            <span>Progress</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item">
+            <i data-lucide="settings"></i>
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header">
+          <div class="header-left">
+            <h1>Dashboard</h1>
+            <p>Selamat datang kembali di SkillScape 🚀</p>
+          </div>
+          <div class="header-right">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" placeholder="Cari materi atau simulasi..." />
+            </div>
+            <div class="user-profile">
+              <div class="avatar" id="sidebarAvatar">D</div>
+              <div class="user-info">
+                <h4 id="sidebarUserName">Dona Damayanti</h4>
+                <span>Mahasiswa</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Stat Cards - Dynamic Values -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="book-open"></i></div>
+            <div class="stat-info">
+              <h3 id="materiCount">0</h3>
+              <p>Materi Selesai</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="terminal"></i></div>
+            <div class="stat-info">
+              <h3 id="simulasiCount">0</h3>
+              <p>Lab Simulasi</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="award"></i></div>
+            <div class="stat-info">
+              <h3 id="rataSkor">0%</h3>
+              <p>Rata-rata Skor</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="medal"></i></div>
+            <div class="stat-info">
+              <h3 id="badgeCount">0</h3>
+              <p>Badge Diperoleh</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two Columns Layout -->
+        <div class="two-columns">
+          <!-- Rekomendasi Lab Simulasi -->
+          <div class="widget">
+            <div class="widget-header">
+              <h3>Rekomendasi Lab Simulasi</h3>
+              <a href="#" class="widget-link">Lihat semua →</a>
+            </div>
+            <div class="lab-list">
+              <div class="lab-item">
+                <div class="lab-info">
+                  <h4>🔍 Deteksi Phishing</h4>
+                  <p>Analisis email berbahaya dan lindungi data pribadi.</p>
+                </div>
+                <button class="btn-start" data-lab="phishing" data-points="10">
+                  Mulai
+                </button>
+              </div>
+              <div class="lab-item">
+                <div class="lab-info">
+                  <h4>🔐 Password Security</h4>
+                  <p>Bangun password yang kuat dan aman dari serangan.</p>
+                </div>
+                <button class="btn-start" data-lab="password" data-points="10">
+                  Mulai
+                </button>
+              </div>
+              <div class="lab-item">
+                <div class="lab-info">
+                  <h4>🌐 Network Security</h4>
+                  <p>Pelajari cara mengamankan jaringan dari serangan.</p>
+                </div>
+                <button class="btn-start" data-lab="network" data-points="15">
+                  Mulai
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aktivitas Terbaru -->
+          <div class="widget">
+            <div class="widget-header">
+              <h3>Aktivitas Terbaru</h3>
+              <a href="#" class="widget-link">Lihat semua →</a>
+            </div>
+            <div class="activity-list" id="activityList">
+              <div class="activity-item">
+                <i data-lucide="check-circle"></i>
+                <span>Selamat datang di SkillScape!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="two-columns">
+          <!-- Progress Belajar dengan Circle Progress -->
+          <div class="widget">
+            <div class="widget-header">
+              <h3>Progress Belajar</h3>
+            </div>
+            <div class="progress-container">
+              <div class="progress-circle">
+                <svg width="160" height="160" viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#6366f1" />
+                      <stop offset="100%" stop-color="#a855f7" />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    class="bg-circle"
+                    cx="80"
+                    cy="80"
+                    r="70"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="10"
+                  />
+                  <circle
+                    class="fill-circle"
+                    cx="80"
+                    cy="80"
+                    r="70"
+                    stroke="url(#gradient)"
+                    fill="none"
+                    stroke-width="10"
+                    stroke-dasharray="440"
+                    stroke-dashoffset="440"
+                  />
+                </svg>
+                <div class="progress-text">
+                  <div class="percentage" id="progressPercent">0%</div>
+                  <div class="label">Selesai</div>
+                </div>
+              </div>
+              <p style="margin-top: 16px; color: #94a3b8; font-size: 0.85rem">
+                Total penyelesaian seluruh materi
+              </p>
+            </div>
+          </div>
+
+          <!-- Lanjutkan Belajar -->
+          <div class="widget">
+            <div class="widget-header">
+              <h3>Lanjutkan Belajar</h3>
+            </div>
+            <div class="course-card" id="continueLearning">
+              <div class="course-title">📚 Mulai belajar pertama Anda</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+              <span
+                style="font-size: 0.8rem; color: #94a3b8"
+                id="courseProgress"
+                >0% selesai</span
+              >
+              <div>
+                <a href="materi.html" class="btn-resume" id="resumeBtn"
+                  >Mulai Belajar →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roadmap Cyber Security -->
+        <div class="widget" style="margin-top: 0">
+          <div class="widget-header">
+            <h3>Roadmap Cyber Security</h3>
+            <a href="#" class="widget-link">Lihat roadmap lengkap →</a>
+          </div>
+          <div class="roadmap-container" id="roadmapContainer">
+            <div class="roadmap-step" data-roadmap="basic">
+              Dasar Cyber Security
+            </div>
+            <div class="roadmap-step" data-roadmap="password">
+              Password Security
+            </div>
+            <div class="roadmap-step" data-roadmap="phishing">
+              Phishing Detection
+            </div>
+            <div class="roadmap-step" data-roadmap="network">
+              Network Security
+            </div>
+            <div class="roadmap-step" data-roadmap="forensic">
+              Digital Forensics
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal Phishing Simulation -->
+    <div id="simulationModal" class="simulation-modal">
+      <div class="simulation-modal-content">
+        <div class="simulation-modal-header">
+          <h2>🔍 Simulasi Deteksi Phishing</h2>
+          <button class="close-modal-btn">&times;</button>
+        </div>
+
+        <div id="simulation-intro">
+          <p class="simulation-desc">
+            Anda menerima email berikut. Analisis apakah ini phishing atau
+            bukan.
+          </p>
+          <button class="btn-simulate" id="startSimBtn">Mulai Simulasi</button>
+        </div>
+
+        <div id="emailMockup" class="email-mockup" style="display: none">
+          <div class="email-header">
+            <p>From: <span>security@bn1-update-system.com</span></p>
+            <p>Subject: <span>⚠️ Keamanan Akun - Tindakan Diperlukan</span></p>
+          </div>
+          <div class="email-body">
+            <p>Yth. Nasabah,</p>
+            <p>
+              Kami mendeteksi aktivitas mencurigakan pada akun Anda. Untuk
+              keamanan, harap verifikasi akun Anda segera.
+            </p>
+            <div class="email-warning">
+              <a href="#" class="phishing-link"
+                >https://bn1-verifikasi-palsu.com/login</a
+              >
+            </div>
+            <p class="email-footer">
+              Jika tidak melakukan verifikasi dalam 24 jam, akun Anda akan
+              ditangguhkan.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="simulation-choices"
+          class="simulation-choices"
+          style="display: none"
+        >
+          <button class="choice-btn" data-choice="safe" data-points="10">
+            ✅ Tidak menghiraukan email tersebut
+          </button>
+          <button class="choice-btn" data-choice="danger-link" data-points="0">
+            ⚠️ Mengklik link verifikasi
+          </button>
+          <button class="choice-btn" data-choice="reply" data-points="5">
+            📧 Membalas email penipu
+          </button>
+        </div>
+
+        <div id="feedback-box" class="feedback-box"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

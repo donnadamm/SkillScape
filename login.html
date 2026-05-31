@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login - SkillScape</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- BACKGROUND BLUR -->
+
+    <div class="blur blur-1"></div>
+    <div class="blur blur-2"></div>
+
+    <!-- LOGIN PAGE -->
+
+    <section class="login-page">
+      <div class="login-container">
+        <!-- LEFT -->
+
+        <div class="login-left">
+          <div class="login-brand">
+            <i data-lucide="shield-check"></i>
+
+            <span>SkillScape</span>
+          </div>
+
+          <h1>Selamat Datang Kembali</h1>
+
+          <p>
+            Masuk untuk melanjutkan pembelajaran keamanan digital dan simulasi
+            interaktif modern.
+          </p>
+
+          <div class="login-illustration">
+            <div class="login-card">
+              <i data-lucide="shield"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="login-right">
+          <div class="login-box-page">
+            <h2>Login</h2>
+
+            <p>Masukkan akun SkillScape kamu</p>
+
+            <form id="loginForm">
+              <div class="input-group">
+                <label>Email</label>
+
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Masukkan email"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label>Password</label>
+
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Masukkan password"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="login-submit">Login Sekarang</button>
+            </form>
+
+            <div class="login-footer">
+              Belum punya akun?
+              <a href="daftar.html"> Daftar </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

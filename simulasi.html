@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillScape - Simulasi Keamanan Siber</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="simulasi.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i data-lucide="shield-check"></i>
+          <span>SkillScape</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="materi.html" class="nav-item">
+            <i data-lucide="book-open"></i>
+            <span>Materi</span>
+          </a>
+          <a href="simulasi.html" class="nav-item active">
+            <i data-lucide="terminal"></i>
+            <span>Simulasi</span>
+          </a>
+          <a href="kuis.html" class="nav-item">
+            <i data-lucide="pen-tool"></i>
+            <span>Kuis</span>
+          </a>
+          <a href="progress.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            <span>Progress</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item">
+            <i data-lucide="settings"></i>
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="simulasi-header">
+          <h1>Simulasi Interaktif</h1>
+          <p>Pilih simulasi untuk melatih pemahamanmu dalam keamanan digital</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="simulasi-stats">
+          <div class="stat-sim-card">
+            <i data-lucide="mail-search"></i>
+            <div class="stat-value" id="simulasiTersedia">6</div>
+            <div class="stat-label">Simulasi Tersedia</div>
+          </div>
+          <div class="stat-sim-card">
+            <i data-lucide="check-circle"></i>
+            <div class="stat-value" id="simulasiSelesai">0</div>
+            <div class="stat-label">Simulasi Selesai</div>
+          </div>
+          <div class="stat-sim-card">
+            <i data-lucide="award"></i>
+            <div class="stat-value" id="totalSkorSim">0</div>
+            <div class="stat-label">Total Skor</div>
+          </div>
+          <div class="stat-sim-card">
+            <i data-lucide="trending-up"></i>
+            <div class="stat-value" id="rataSkorSim">0%</div>
+            <div class="stat-label">Rata-rata Skor</div>
+          </div>
+        </div>
+
+        <!-- Simulasi List -->
+        <div class="simulasi-list" id="simulasiList">
+          <!-- Simulasi cards akan di generate oleh JS -->
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal Simulasi Detail -->
+    <div id="simulasiModal" class="simulasi-modal">
+      <div class="simulasi-modal-content">
+        <div class="simulasi-modal-header">
+          <h2 id="modalTitle">Simulasi</h2>
+          <button class="close-modal-btn" onclick="closeSimulasiModal()">
+            &times;
+          </button>
+        </div>
+        <div class="simulasi-modal-body" id="modalBody">
+          <!-- Konten simulasi akan diisi oleh JS -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="simulasi.js"></script>
+  </body>
+</html>

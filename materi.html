@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillScape - Materi Cyber Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="materi.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i data-lucide="shield-check"></i>
+                <span>SkillScape</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="materi.html" class="nav-item active">
+                    <i data-lucide="book-open"></i>
+                    <span>Materi</span>
+                </a>
+                <a href="simulasi.html" class="nav-item">
+                    <i data-lucide="terminal"></i>
+                    <span>Simulasi</span>
+                </a>
+                <a href="kuis.html" class="nav-item">
+                    <i data-lucide="pen-tool"></i>
+                    <span>Kuis</span>
+                </a>
+                <a href="progress.html" class="nav-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="pengaturan.html" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Pengaturan</span>
+                </a>
+            </nav>
+            <button id="logoutBtn" class="logout-btn">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="materi-header">
+                <h1>Materi Pembelajaran</h1>
+                <p>Pelajari konsep keamanan siber dari dasar hingga mahir</p>
+            </div>
+
+            <!-- Stats Summary -->
+            <div class="stats-summary">
+                <div class="stat-summary-card">
+                    <i data-lucide="book-open"></i>
+                    <div class="stat-value" id="totalMateri">0</div>
+                    <div class="stat-label">Total Materi</div>
+                </div>
+                <div class="stat-summary-card">
+                    <i data-lucide="check-circle"></i>
+                    <div class="stat-value" id="completedMateri">0</div>
+                    <div class="stat-label">Telah Selesai</div>
+                </div>
+                <div class="stat-summary-card">
+                    <i data-lucide="award"></i>
+                    <div class="stat-value" id="totalPoints">0</div>
+                    <div class="stat-label">Total Poin</div>
+                </div>
+                <div class="stat-summary-card">
+                    <i data-lucide="trending-up"></i>
+                    <div class="stat-value" id="completionRate">0%</div>
+                    <div class="stat-label">Progress Belajar</div>
+                </div>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">📖 Semua Materi</button>
+                <button class="category-tab" data-category="dasar">🌱 Dasar</button>
+                <button class="category-tab" data-category="keamanan">🛡️ Keamanan</button>
+                <button class="category-tab" data-category="lanjutan">🚀 Lanjutan</button>
+            </div>
+
+            <!-- Materi Grid -->
+            <div class="materi-grid" id="materiGrid">
+                <!-- Materi akan di-generate oleh JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Detail Materi -->
+    <div id="materiDetailModal" class="materi-detail-modal">
+        <div class="materi-detail-content">
+            <div class="materi-detail-header">
+                <h2 id="modalTitle">Judul Materi</h2>
+                <button class="close-modal-btn" onclick="closeMateriModal()">&times;</button>
+            </div>
+            <div class="materi-detail-body" id="modalBody">
+                <!-- Konten detail materi akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

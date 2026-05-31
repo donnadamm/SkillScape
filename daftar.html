@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar - SkillScape</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      /* Additional styles for register page */
+      .register-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .register-container {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 40px;
+        overflow: hidden;
+        backdrop-filter: blur(18px);
+      }
+
+      .register-left {
+        padding: 60px;
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.18),
+          rgba(168, 85, 247, 0.12)
+        );
+        position: relative;
+      }
+
+      .register-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin-bottom: 40px;
+      }
+
+      .register-brand i {
+        color: #818cf8;
+      }
+
+      .register-left h1 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .register-left p {
+        color: var(--text-dim);
+        line-height: 1.7;
+        max-width: 450px;
+        font-size: 0.95rem;
+      }
+
+      .register-illustration {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .register-card {
+        width: 180px;
+        height: 180px;
+        border-radius: 35px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 50px rgba(99, 102, 241, 0.35);
+      }
+
+      .register-card i {
+        width: 70px;
+        height: 70px;
+        color: white;
+      }
+
+      .register-right {
+        padding: 50px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .register-box-page {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .register-box-page h2 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, #fff, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .register-box-page > p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+        font-size: 0.85rem;
+      }
+
+      /* Input Groups with password toggle */
+      .input-group {
+        margin-bottom: 18px;
+        position: relative;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 12px 40px 12px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        font-size: 0.85rem;
+        outline: none;
+        transition: all 0.3s;
+      }
+
+      .input-group input:focus {
+        border-color: #818cf8;
+      }
+
+      /* Password toggle button */
+      .password-toggle {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #94a3b8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s;
+        padding: 0;
+      }
+
+      .password-toggle:hover {
+        color: #818cf8;
+      }
+
+      .password-toggle i {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Name row */
+      .name-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      /* Checkbox */
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 18px 0;
+      }
+
+      .checkbox-group input {
+        width: 16px;
+        height: 16px;
+        accent-color: #818cf8;
+        cursor: pointer;
+      }
+
+      .checkbox-group label {
+        color: #94a3b8;
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+
+      .checkbox-group a {
+        color: #818cf8;
+        text-decoration: none;
+      }
+
+      /* Register Submit Button */
+      .register-submit {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 8px;
+      }
+
+      .register-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px -8px rgba(99, 102, 241, 0.4);
+      }
+
+      /* Divider */
+      .divider {
+        text-align: center;
+        color: #64748b;
+        font-size: 0.75rem;
+        margin: 24px 0 20px;
+        position: relative;
+      }
+
+      .divider span {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 0 12px;
+      }
+
+      /* ============================================================
+           SOCIAL BUTTONS
+        ============================================================ */
+      .social-login {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .social-buttons {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .Btn {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        position: relative;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .svgContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(0px);
+        border-radius: 16px;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1.5px solid rgba(156, 156, 156, 0.3);
+      }
+
+      .svgContainer svg {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.35s ease;
+      }
+
+      .BG {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(145deg, #1a1a2e, #16213e);
+        z-index: -1;
+        border-radius: 16px;
+        pointer-events: none;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0.8;
+      }
+
+      .Btn:hover {
+        transform: translateY(-4px);
+      }
+
+      .Btn:hover .BG {
+        transform: rotate(30deg) scale(1.08);
+        transform-origin: bottom;
+        opacity: 1;
+      }
+
+      .Btn:hover .svgContainer {
+        backdrop-filter: blur(12px);
+        transform: scale(1.03);
+      }
+
+      .Btn:hover .svgContainer svg {
+        transform: scale(1.15);
+      }
+
+      .Btn.google:hover .svgContainer {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: #ffffff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+      }
+
+      .Btn.github:hover .svgContainer {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: #ffffff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+      }
+
+      .Btn.x:hover .svgContainer {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: #ffffff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+      }
+
+      .Btn:active {
+        transform: translateY(-1px);
+      }
+
+      .Btn:active .svgContainer {
+        transform: scale(0.97);
+      }
+
+      /* Register Footer */
+      .register-footer {
+        margin-top: 20px;
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.8rem;
+      }
+
+      .register-footer a {
+        color: #818cf8;
+        text-decoration: none;
+      }
+
+      /* ============================================================
+           SOCIAL LOGIN MODAL STYLES (Google, GitHub, X)
+        ============================================================ */
+      .social-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(20px);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .social-modal-content {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+        border-radius: 32px;
+        max-width: 450px;
+        width: 90%;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        animation: modalFadeIn 0.3s ease;
+        box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.5);
+      }
+
+      .social-modal-header {
+        text-align: center;
+        padding: 32px 24px 20px;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+        position: relative;
+      }
+
+      .social-logo {
+        width: 48px;
+        height: 48px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .social-logo.github {
+        background: #24292e;
+      }
+
+      .social-logo.x {
+        background: #000;
+      }
+
+      .social-modal-header h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      .social-modal-header p {
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+
+      .social-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        color: #94a3b8;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+      }
+
+      .social-modal-close:hover {
+        background: rgba(239, 68, 68, 0.2);
+        color: #f87171;
+      }
+
+      .social-modal-body {
+        padding: 16px 24px;
+      }
+
+      .account-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .account-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .account-item:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: rgba(99, 102, 241, 0.3);
+        transform: translateX(4px);
+      }
+
+      .account-avatar {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+        flex-shrink: 0;
+      }
+
+      .account-avatar.github {
+        background: #24292e;
+      }
+
+      .account-avatar.x {
+        background: #000;
+      }
+
+      .account-info {
+        flex: 1;
+      }
+
+      .account-name {
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .account-email {
+        font-size: 0.75rem;
+        color: #94a3b8;
+      }
+
+      .account-select {
+        color: #818cf8;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+
+      .use-other {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        color: #fff;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 8px;
+      }
+
+      .use-other:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+
+      .other-icon {
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .social-modal-footer {
+        padding: 16px 24px 24px;
+        border-top: 1px solid rgba(99, 102, 241, 0.15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 0.7rem;
+        color: #64748b;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 16px;
+      }
+
+      .footer-links a {
+        color: #64748b;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #818cf8;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .register-container {
+          grid-template-columns: 1fr;
+        }
+        .register-left {
+          display: none;
+        }
+        .register-right {
+          padding: 40px 30px;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .name-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .social-buttons {
+          gap: 15px;
+        }
+        .Btn {
+          width: 48px;
+          height: 48px;
+        }
+        .svgContainer svg {
+          width: 20px;
+          height: 20px;
+        }
+        .register-right {
+          padding: 30px 20px;
+        }
+        .register-box-page h2 {
+          font-size: 1.6rem;
+        }
+        .social-modal-content {
+          width: 95%;
+        }
+        .social-modal-footer {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blur blur-1"></div>
+    <div class="blur blur-2"></div>
+
+    <section class="register-page">
+      <div class="register-container">
+        <!-- LEFT SIDE -->
+        <div class="register-left">
+          <div class="register-brand">
+            <i data-lucide="shield-check"></i>
+            <span>SkillScape</span>
+          </div>
+          <h1>Mulai Perjalananmu</h1>
+          <p>
+            Bergabunglah dengan SkillScape dan pelajari keamanan digital melalui
+            simulasi interaktif.
+          </p>
+          <div class="register-illustration">
+            <div class="register-card">
+              <i data-lucide="users"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="register-right">
+          <div class="register-box-page">
+            <h2>Daftar</h2>
+            <p>Buat akun SkillScape-mu</p>
+
+            <!-- Register Form -->
+            <form id="registerForm">
+              <div class="name-row">
+                <div class="input-group">
+                  <label>Nama Depan</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    placeholder="Nama depan"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label>Nama Belakang</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    placeholder="Nama belakang"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  id="regEmail"
+                  placeholder="Masukkan email"
+                  required
+                />
+              </div>
+
+              <div class="input-group" id="passwordGroup">
+                <label>Password</label>
+                <input
+                  type="password"
+                  id="regPassword"
+                  placeholder="Buat password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('regPassword')"
+                >
+                  <i data-lucide="eye"></i>
+                </button>
+              </div>
+
+              <div class="input-group" id="confirmPasswordGroup">
+                <label>Konfirmasi Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Konfirmasi password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('confirmPassword')"
+                >
+                  <i data-lucide="eye"></i>
+                </button>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="termsCheckbox" required />
+                <label for="termsCheckbox"
+                  >Saya menyetujui <a href="#">Syarat & Ketentuan</a> dan
+                  <a href="#">Kebijakan Privasi</a></label
+                >
+              </div>
+
+              <button type="submit" class="register-submit">
+                Daftar Sekarang →
+              </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">
+              <span>atau daftar dengan</span>
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="social-login">
+              <div class="social-buttons">
+                <!-- Google Button -->
+                <button
+                  class="Btn google"
+                  type="button"
+                  onclick="socialLogin('google')"
+                >
+                  <span class="svgContainer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 488 512"
+                    >
+                      <path
+                        fill="white"
+                        d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="BG"></span>
+                </button>
+
+                <!-- GitHub Button -->
+                <button
+                  class="Btn github"
+                  type="button"
+                  onclick="socialLogin('github')"
+                >
+                  <span class="svgContainer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 496 512"
+                    >
+                      <path
+                        fill="white"
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="BG"></span>
+                </button>
+
+                <!-- X (Twitter) Button -->
+                <button class="Btn x" type="button" onclick="socialLogin('x')">
+                  <span class="svgContainer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="white"
+                        d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="BG"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="register-footer">
+              Sudah punya akun? <a href="login.html">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Login Modal -->
+    <div id="googleModal" class="social-modal">
+      <div class="social-modal-content">
+        <div class="social-modal-header">
+          <div class="social-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 488 512"
+              width="24"
+              height="24"
+            >
+              <path
+                fill="#4285F4"
+                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+              />
+            </svg>
+          </div>
+          <h3>Login dengan Google</h3>
+          <p>Pilih Akun untuk melanjutkan ke SkillScape</p>
+          <button
+            class="social-modal-close"
+            onclick="closeSocialModal('google')"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="social-modal-body">
+          <div class="account-list" id="googleAccountList"></div>
+          <button class="use-other" onclick="addOtherAccount('google')">
+            <span class="other-icon">+</span>
+            Gunakan akun lain
+          </button>
+        </div>
+        <div class="social-modal-footer">
+          <span>Indonesia ▼</span>
+          <div class="footer-links">
+            <a href="#">Bantuan</a>
+            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Persyaratan Layanan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub Login Modal -->
+    <div id="githubModal" class="social-modal">
+      <div class="social-modal-content">
+        <div class="social-modal-header">
+          <div class="social-logo github">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 496 512"
+              width="24"
+              height="24"
+            >
+              <path
+                fill="white"
+                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"
+              />
+            </svg>
+          </div>
+          <h3>Login dengan GitHub</h3>
+          <p>Pilih Akun untuk melanjutkan ke SkillScape</p>
+          <button
+            class="social-modal-close"
+            onclick="closeSocialModal('github')"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="social-modal-body">
+          <div class="account-list" id="githubAccountList"></div>
+          <button class="use-other" onclick="addOtherAccount('github')">
+            <span class="other-icon">+</span>
+            Gunakan akun lain
+          </button>
+        </div>
+        <div class="social-modal-footer">
+          <span>Indonesia ▼</span>
+          <div class="footer-links">
+            <a href="#">Bantuan</a>
+            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Persyaratan Layanan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- X (Twitter) Login Modal -->
+    <div id="xModal" class="social-modal">
+      <div class="social-modal-content">
+        <div class="social-modal-header">
+          <div class="social-logo x">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              width="24"
+              height="24"
+            >
+              <path
+                fill="white"
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+              />
+            </svg>
+          </div>
+          <h3>Login dengan X</h3>
+          <p>Pilih Akun untuk melanjutkan ke SkillScape</p>
+          <button class="social-modal-close" onclick="closeSocialModal('x')">
+            &times;
+          </button>
+        </div>
+        <div class="social-modal-body">
+          <div class="account-list" id="xAccountList"></div>
+          <button class="use-other" onclick="addOtherAccount('x')">
+            <span class="other-icon">+</span>
+            Gunakan akun lain
+          </button>
+        </div>
+        <div class="social-modal-footer">
+          <span>Indonesia ▼</span>
+          <div class="footer-links">
+            <a href="#">Bantuan</a>
+            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Persyaratan Layanan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============================================================
+      // TOGGLE PASSWORD FUNCTION
+      // ============================================================
+      function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const toggleBtn =
+          input.parentElement.querySelector(".password-toggle i");
+
+        if (input.type === "password") {
+          input.type = "text";
+          if (toggleBtn) {
+            toggleBtn.setAttribute("data-lucide", "eye-off");
+          }
+        } else {
+          input.type = "password";
+          if (toggleBtn) {
+            toggleBtn.setAttribute("data-lucide", "eye");
+          }
+        }
+
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+        }
+      }
+
+      // ============================================================
+      // ACCOUNTS DATA
+      // ============================================================
+      let googleAccounts = [
+        {
+          name: "Dona Damayanti",
+          email: "donadamayanti062@gmail.com",
+          avatar: "DD",
+        },
+        {
+          name: "Dona Damayanti",
+          email: "nengwae82217@gmail.com",
+          avatar: "DN",
+        },
+        {
+          name: "tiara dwi priliantika",
+          email: "tiaradwipriliantika@gmail.com",
+          avatar: "TP",
+        },
+      ];
+
+      let githubAccounts = [
+        {
+          name: "donadamayanti",
+          email: "donadamayanti@github.com",
+          username: "donadamayanti",
+          avatar: "DD",
+        },
+        {
+          name: "tiaradwi",
+          email: "tiaradwi@github.com",
+          username: "tiaradwi",
+          avatar: "TD",
+        },
+      ];
+
+      let xAccounts = [
+        {
+          name: "Dona D",
+          email: "donad@x.com",
+          username: "donad",
+          avatar: "DD",
+        },
+        {
+          name: "Tiara P",
+          email: "tiarap@x.com",
+          username: "tiarap",
+          avatar: "TP",
+        },
+      ];
+
+      // ============================================================
+      // SOCIAL MODAL FUNCTIONS
+      // ============================================================
+      function showSocialModal(provider) {
+        const modalId =
+          provider === "google"
+            ? "googleModal"
+            : provider === "github"
+              ? "githubModal"
+              : "xModal";
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          renderAccounts(provider);
+          modal.style.display = "flex";
+        }
+      }
+
+      function closeSocialModal(provider) {
+        const modalId =
+          provider === "google"
+            ? "googleModal"
+            : provider === "github"
+              ? "githubModal"
+              : "xModal";
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      function renderAccounts(provider) {
+        let containerId, accounts;
+
+        if (provider === "google") {
+          containerId = "googleAccountList";
+          accounts = googleAccounts;
+        } else if (provider === "github") {
+          containerId = "githubAccountList";
+          accounts = githubAccounts;
+        } else {
+          containerId = "xAccountList";
+          accounts = xAccounts;
+        }
+
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        accounts.forEach((account, index) => {
+          const accountDiv = document.createElement("div");
+          accountDiv.className = "account-item";
+          accountDiv.onclick = () => selectSocialAccount(provider, account);
+          accountDiv.innerHTML = `
+                    <div class="account-avatar ${provider === "github" ? "github" : provider === "x" ? "x" : ""}">${account.avatar}</div>
+                    <div class="account-info">
+                        <div class="account-name">${account.name}</div>
+                        <div class="account-email">${account.email}</div>
+                    </div>
+                    <div class="account-select">Pilih</div>
+                `;
+          container.appendChild(accountDiv);
+        });
+      }
+
+      function selectSocialAccount(provider, account) {
+        let userData = {};
+
+        if (provider === "google") {
+          userData = {
+            name: account.name,
+            email: account.email,
+            username: account.email.split("@")[0],
+            provider: provider,
+            avatar: account.avatar,
+            joinDate: new Date().toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          };
+        } else if (provider === "github") {
+          userData = {
+            name: account.name,
+            email: account.email,
+            username: account.username,
+            provider: provider,
+            avatar: account.avatar,
+            joinDate: new Date().toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          };
+        } else {
+          userData = {
+            name: account.name,
+            email: account.email,
+            username: account.username,
+            provider: "X",
+            avatar: account.avatar,
+            joinDate: new Date().toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          };
+        }
+
+        localStorage.setItem("userProfile", JSON.stringify(userData));
+        localStorage.setItem("skillscapeLogin", "true");
+
+        if (!localStorage.getItem("userStats")) {
+          const defaultStats = {
+            materiSelesai: 0,
+            simulasiSelesai: 0,
+            totalSkor: 0,
+            totalQuiz: 0,
+            badgeCount: 0,
+            completedLabs: [],
+            completedMateri: [],
+            activityLog: [
+              {
+                text: `Selamat datang di SkillScape! (Login dengan ${provider})`,
+                time: new Date().toISOString(),
+                type: "welcome",
+              },
+            ],
+            roadmapProgress: {
+              basic: false,
+              password: false,
+              phishing: false,
+              network: false,
+              forensic: false,
+            },
+            courseProgress: {
+              currentCourse: "Dasar Cyber Security",
+              progress: 0,
+            },
+          };
+          localStorage.setItem("userStats", JSON.stringify(defaultStats));
+        }
+
+        closeSocialModal(provider);
+        alert(`Selamat datang ${account.name}!`);
+        window.location.href = "dashboard.html";
+      }
+
+      function addOtherAccount(provider) {
+        const email = prompt(`Masukkan email ${provider.toUpperCase()} Anda:`);
+        if (email && email.trim()) {
+          const name = prompt(
+            "Masukkan nama lengkap Anda:",
+            email.split("@")[0],
+          );
+          if (name) {
+            const initial = name.charAt(0).toUpperCase();
+            const secondInitial = name.split(" ")[1]
+              ? name.split(" ")[1].charAt(0).toUpperCase()
+              : "";
+            const newAccount = {
+              name: name,
+              email: email,
+              username: email.split("@")[0],
+              avatar: initial + secondInitial,
+            };
+
+            if (provider === "google") {
+              googleAccounts.push(newAccount);
+              renderAccounts("google");
+              selectSocialAccount("google", newAccount);
+            } else if (provider === "github") {
+              githubAccounts.push(newAccount);
+              renderAccounts("github");
+              selectSocialAccount("github", newAccount);
+            } else {
+              xAccounts.push(newAccount);
+              renderAccounts("x");
+              selectSocialAccount("x", newAccount);
+            }
+          }
+        }
+      }
+
+      // ============================================================
+      // SOCIAL LOGIN FUNCTION
+      // ============================================================
+      function socialLogin(provider) {
+        if (provider === "google") {
+          showSocialModal("google");
+        } else if (provider === "github") {
+          showSocialModal("github");
+        } else if (provider === "x") {
+          showSocialModal("x");
+        }
+      }
+
+      // ============================================================
+      // PASSWORD VALIDATION
+      // ============================================================
+      function isPasswordContainEmail(password, email) {
+        if (!email || !password) return false;
+        const emailPrefix = email.split("@")[0].toLowerCase();
+        const passwordLower = password.toLowerCase();
+        return passwordLower.includes(emailPrefix);
+      }
+
+      // ============================================================
+      // REGISTER FORM SUBMISSION
+      // ============================================================
+      const registerForm = document.getElementById("registerForm");
+      if (registerForm) {
+        registerForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const firstName = document.getElementById("firstName").value.trim();
+          const lastName = document.getElementById("lastName").value.trim();
+          const email = document.getElementById("regEmail").value.trim();
+          const password = document.getElementById("regPassword").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+          const termsChecked = document.getElementById("termsCheckbox").checked;
+
+          if (!firstName || !email || !password) {
+            alert("Harap isi semua field yang diperlukan!");
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert("Format email tidak valid!");
+            return;
+          }
+
+          if (isPasswordContainEmail(password, email)) {
+            alert(
+              "Password tidak boleh mengandung nama email Anda! Gunakan password yang lebih aman.",
+            );
+            return;
+          }
+
+          if (password.length < 6) {
+            alert("Password minimal 6 karakter!");
+            return;
+          }
+
+          const hasUpperCase = /[A-Z]/.test(password);
+          const hasLowerCase = /[a-z]/.test(password);
+          const hasNumber = /[0-9]/.test(password);
+
+          if (!hasUpperCase || !hasLowerCase || !hasNumber) {
+            alert(
+              "Password harus mengandung huruf besar, huruf kecil, dan angka!",
+            );
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            alert("Password dan konfirmasi password tidak cocok!");
+            return;
+          }
+
+          if (!termsChecked) {
+            alert("Harap setujui Syarat & Ketentuan!");
+            return;
+          }
+
+          const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+
+          const userData = {
+            name: fullName,
+            email: email,
+            username: email.split("@")[0],
+            joinDate: new Date().toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          };
+
+          localStorage.setItem("userProfile", JSON.stringify(userData));
+          localStorage.setItem("skillscapeLogin", "true");
+
+          if (!localStorage.getItem("userStats")) {
+            const defaultStats = {
+              materiSelesai: 0,
+              simulasiSelesai: 0,
+              totalSkor: 0,
+              totalQuiz: 0,
+              badgeCount: 0,
+              completedLabs: [],
+              completedMateri: [],
+              activityLog: [
+                {
+                  text: "Selamat datang di SkillScape!",
+                  time: new Date().toISOString(),
+                  type: "welcome",
+                },
+              ],
+              roadmapProgress: {
+                basic: false,
+                password: false,
+                phishing: false,
+                network: false,
+                forensic: false,
+              },
+              courseProgress: {
+                currentCourse: "Dasar Cyber Security",
+                progress: 0,
+              },
+            };
+            localStorage.setItem("userStats", JSON.stringify(defaultStats));
+          }
+
+          alert(`Selamat datang ${fullName}! Pendaftaran berhasil.`);
+          window.location.href = "dashboard.html";
+        });
+      }
+
+      // ============================================================
+      // INITIALIZATION
+      // ============================================================
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+        }
+
+        if (localStorage.getItem("skillscapeLogin") === "true") {
+          window.location.href = "dashboard.html";
+        }
+
+        // Close modals when clicking outside
+        const modals = ["googleModal", "githubModal", "xModal"];
+        modals.forEach((modalId) => {
+          const modal = document.getElementById(modalId);
+          if (modal) {
+            modal.addEventListener("click", function (e) {
+              if (e.target === modal) {
+                const provider = modalId.replace("Modal", "");
+                closeSocialModal(provider);
+              }
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillScape - Pengaturan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="pengaturan.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i data-lucide="shield-check"></i>
+          <span>SkillScape</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="materi.html" class="nav-item">
+            <i data-lucide="book-open"></i>
+            <span>Materi</span>
+          </a>
+          <a href="simulasi.html" class="nav-item">
+            <i data-lucide="terminal"></i>
+            <span>Simulasi</span>
+          </a>
+          <a href="kuis.html" class="nav-item">
+            <i data-lucide="pen-tool"></i>
+            <span>Kuis</span>
+          </a>
+          <a href="progress.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            <span>Progress</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item active">
+            <i data-lucide="settings"></i>
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="settings-header">
+          <h1>⚙️ Pengaturan</h1>
+          <p>Kelola informasi akun dan pengaturan pribadimu</p>
+        </div>
+
+        <div class="settings-grid">
+          <!-- Left Column - Profile Info -->
+          <div class="settings-card profile-card">
+            <div class="card-header">
+              <i data-lucide="user-circle"></i>
+              <h3>Informasi Profil</h3>
+            </div>
+            <div class="profile-info">
+              <div class="profile-avatar-large" id="profileAvatar">
+                <span id="avatarInitial">A</span>
+              </div>
+              <!-- Informasi Profil -->
+              <div class="profile-details">
+                <div class="info-row">
+                  <span class="info-label">Nama:</span>
+                  <span class="info-value" id="profileName">Andi Pratama</span>
+                  <button
+                    class="edit-btn"
+                    onclick="editInline('name', 'profileName')"
+                  >
+                    <i data-lucide="edit-2"></i>
+                  </button>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Email:</span>
+                  <span class="info-value" id="profileEmail"
+                    >andi23@example.com</span
+                  >
+                  <button
+                    class="edit-btn"
+                    onclick="editInline('email', 'profileEmail')"
+                  >
+                    <i data-lucide="edit-2"></i>
+                  </button>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">ID Pengguna:</span>
+                  <span class="info-value" id="profileId">XP-00123</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Username:</span>
+                  <span class="info-value" id="profileUsername">andi23</span>
+                  <button
+                    class="edit-btn"
+                    onclick="editInline('username', 'profileUsername')"
+                  >
+                    <i data-lucide="edit-2"></i>
+                  </button>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Bergabung:</span>
+                  <span class="info-value" id="profileJoinDate"
+                    >20 Mei 2025</span
+                  >
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Level Keamanan:</span>
+                  <span class="info-value" id="profileLevel">Menengah</span>
+                </div>
+              </div>
+            </div>
+            <button class="change-password-btn" onclick="changePassword()">
+              <i data-lucide="lock"></i> Ubah Password
+            </button>
+          </div>
+
+          <!-- Right Column - Settings -->
+          <div class="settings-card">
+            <div class="card-header">
+              <i data-lucide="sliders"></i>
+              <h3>Preferensi</h3>
+            </div>
+
+            <div class="settings-list">
+              <div class="setting-item">
+                <div class="setting-info">
+                  <i data-lucide="moon"></i>
+                  <div>
+                    <h4>Mode Gelap</h4>
+                    <p>Tampilan gelap untuk kenyamanan mata</p>
+                  </div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="darkModeToggle" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <i data-lucide="volume-2"></i>
+                  <div>
+                    <h4>Suara</h4>
+                    <p>Efek suara dan notifikasi</p>
+                  </div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="soundToggle" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <i data-lucide="bell"></i>
+                  <div>
+                    <h4>Notifikasi</h4>
+                    <p>Pemberitahuan aktivitas belajar</p>
+                  </div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="notificationToggle" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <i data-lucide="globe"></i>
+                  <div>
+                    <h4>Bahasa</h4>
+                    <p>Pilih bahasa antarmuka</p>
+                  </div>
+                </div>
+                <select id="languageSelect" class="language-select">
+                  <option value="id">🇮🇩 Bahasa Indonesia</option>
+                  <option value="en">🇬🇧 English</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Support Card -->
+          <div class="settings-card support-card-settings">
+            <div class="card-header">
+              <i data-lucide="headphones"></i>
+              <h3>Butuh bantuan?</h3>
+            </div>
+            <p>
+              Hubungi tim support kapan saja untuk membantu perjalanan belajarmu
+            </p>
+            <button class="support-btn-settings" onclick="showSupportModal()">
+              <i data-lucide="message-circle"></i> Hubungi Support
+            </button>
+          </div>
+
+          <!-- Security Tips Card -->
+          <div class="settings-card security-card">
+            <div class="card-header">
+              <i data-lucide="shield-check"></i>
+              <h3>Tips Keamanan Akun</h3>
+            </div>
+            <ul class="security-tips">
+              <li>
+                <i data-lucide="check-circle"></i> Jaga keamanan akunmu dengan
+                tidak membagikan informasi login kepada siapapun
+              </li>
+              <li>
+                <i data-lucide="check-circle"></i> Selalu gunakan password yang
+                kuat dan unik untuk setiap akun
+              </li>
+              <li>
+                <i data-lucide="check-circle"></i> Aktifkan verifikasi dua
+                langkah jika tersedia
+              </li>
+              <li>
+                <i data-lucide="check-circle"></i> Jangan pernah mengklik tautan
+                mencurigakan dari email
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal Change Password -->
+    <div id="changePasswordModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>🔐 Ubah Password</h3>
+          <button class="modal-close" onclick="closePasswordModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <label>Password Lama</label>
+            <input
+              type="password"
+              id="oldPassword"
+              placeholder="Masukkan password lama"
+            />
+          </div>
+          <div class="input-group">
+            <label>Password Baru</label>
+            <input
+              type="password"
+              id="newPassword"
+              placeholder="Masukkan password baru"
+            />
+          </div>
+          <div class="input-group">
+            <label>Konfirmasi Password Baru</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Konfirmasi password baru"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="closePasswordModal()">
+            Batal
+          </button>
+          <button class="btn-save" onclick="submitChangePassword()">
+            Simpan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit Profile -->
+    <div id="editProfileModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="editModalTitle">Edit Profil</h3>
+          <button class="modal-close" onclick="closeEditModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <label id="editFieldLabel">Nama</label>
+            <input
+              type="text"
+              id="editFieldValue"
+              placeholder="Masukkan nilai baru"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="closeEditModal()">Batal</button>
+          <button class="btn-save" onclick="saveEditProfile()">Simpan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div id="supportModal" class="support-modal-settings">
+      <div class="support-modal-content-settings">
+        <div class="support-modal-header">
+          <h3>💬 Hubungi Support</h3>
+          <button class="support-modal-close" onclick="closeSupportModal()">
+            &times;
+          </button>
+        </div>
+        <div class="support-modal-body">
+          <div class="support-contact-options">
+            <div
+              class="support-option"
+              onclick="
+                window.open(
+                  'https://mail.google.com/mail/?view=cm&fs=1&to=nengwae82217@gmail.com',
+                  '_blank',
+                )
+              "
+            >
+              <i data-lucide="mail"></i>
+              <div class="support-option-info">
+                <h4>Email</h4>
+                <p>nengwae82217@gmail.com</p>
+              </div>
+            </div>
+            <div
+              class="support-option"
+              onclick="
+                window.open(
+                  'https://wa.me/6281273487877?text=Halo%20Admin%20SkillScape,%20saya%20butuh%20bantuan.',
+                  '_blank',
+                )
+              "
+            >
+              <i data-lucide="message-circle"></i>
+              <div class="support-option-info">
+                <h4>WhatsApp</h4>
+                <p>+62 812-7348-7877</p>
+              </div>
+            </div>
+          </div>
+          <div class="support-message">
+            <p>Hubungi langsung: <strong>+62 812-7348-7877</strong></p>
+            <p class="support-hours">Jam operasional: Senin - Jumat, 09:00 - 17:00 WIB</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="pengaturan.js"></script>
+  </body>
+</html>

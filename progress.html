@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillScape - Progress Belajar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="progress.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i data-lucide="shield-check"></i>
+          <span>SkillScape</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="materi.html" class="nav-item">
+            <i data-lucide="book-open"></i>
+            <span>Materi</span>
+          </a>
+          <a href="simulasi.html" class="nav-item">
+            <i data-lucide="terminal"></i>
+            <span>Simulasi</span>
+          </a>
+          <a href="kuis.html" class="nav-item">
+            <i data-lucide="pen-tool"></i>
+            <span>Kuis</span>
+          </a>
+          <a href="progress.html" class="nav-item active">
+            <i data-lucide="bar-chart-3"></i>
+            <span>Progress</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item">
+            <i data-lucide="settings"></i>
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="progress-header">
+          <h1>Progress Belajarmu</h1>
+          <p>Lihat perkembangan belajarmu di sini</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="progress-stats">
+          <div class="stat-progress-card">
+            <div class="stat-icon purple">
+              <i data-lucide="layers"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="totalMateriStat">0</div>
+              <div class="stat-label">Total Materi</div>
+            </div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar">
+                <div
+                  class="stat-progress-fill"
+                  id="materiProgressFill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <span class="stat-percent" id="materiPercent">0%</span>
+            </div>
+          </div>
+          <div class="stat-progress-card">
+            <div class="stat-icon green">
+              <i data-lucide="terminal"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="totalSimulasiStat">0</div>
+              <div class="stat-label">Total Simulasi</div>
+            </div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar">
+                <div
+                  class="stat-progress-fill"
+                  id="simulasiProgressFill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <span class="stat-percent" id="simulasiPercent">0%</span>
+            </div>
+          </div>
+          <div class="stat-progress-card">
+            <div class="stat-icon yellow">
+              <i data-lucide="pen-tool"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="avgScoreStat">0%</div>
+              <div class="stat-label">Rata-rata Skor</div>
+            </div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar">
+                <div
+                  class="stat-progress-fill"
+                  id="scoreProgressFill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <span class="stat-percent" id="scorePercent">0%</span>
+            </div>
+          </div>
+          <div class="stat-progress-card">
+            <div class="stat-icon blue">
+              <i data-lucide="shield"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="levelStat">Pemula</div>
+              <div class="stat-label">Level Keamanan</div>
+            </div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar">
+                <div
+                  class="stat-progress-fill"
+                  id="levelProgressFill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <span class="stat-percent" id="levelPercent">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>📈 Grafik Perkembangan</h3>
+              <select id="chartPeriod" class="chart-period">
+                <option value="7">7 Hari Terakhir</option>
+                <option value="14">14 Hari Terakhir</option>
+                <option value="30">30 Hari Terakhir</option>
+              </select>
+            </div>
+            <canvas id="progressChart" class="progress-canvas"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>🎯 Distribusi Kategori</h3>
+            </div>
+            <canvas id="categoryChart" class="progress-canvas"></canvas>
+            <div class="category-legend" id="categoryLegend"></div>
+          </div>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="badges-section">
+          <div class="badges-header">
+            <h3>🏆 Pencapaian Badge</h3>
+            <a href="#" class="view-all">Lihat Semua →</a>
+          </div>
+          <div class="badges-grid" id="badgesGrid">
+            <!-- Badges akan di-generate oleh JS -->
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+          <div class="activity-header">
+            <h3>📋 Aktivitas Terbaru</h3>
+            <a href="#" class="view-all">Lihat Semua →</a>
+          </div>
+          <div class="activity-timeline" id="activityTimeline">
+            <!-- Aktivitas akan di-generate oleh JS -->
+          </div>
+        </div>
+
+        <!-- Support Card -->
+        <div class="support-card">
+          <div class="support-content">
+            <div class="support-text">
+              <h4>💬 Butuh bantuan?</h4>
+              <p>
+                Hubungi tim support kapan saja untuk membantu perjalanan
+                belajarmu.
+              </p>
+            </div>
+            <button class="support-btn">
+              <i data-lucide="headphones"></i> Hubungi Support
+            </button>
+          </div>
+        </div>
+
+        <!-- Motivation Card -->
+        <div class="motivation-card">
+          <div class="motivation-content">
+            <i data-lucide="trending-up"></i>
+            <div class="motivation-text">
+              <h4>Terus Tingkatkan!</h4>
+              <p>
+                Kamu sudah berada di jalur yang tepat. Selesaikan semua materi
+                dan tantangan untuk menjadi ahli keamanan digital!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Pencapaian Badge -->
+        <div id="badgeAchievementModal" class="badge-achievement-modal">
+          <div class="badge-achievement-content">
+            <div class="badge-achievement-icon">
+              <i data-lucide="trophy"></i>
+            </div>
+            <div class="badge-achievement-text">
+              <h3>🎉 Badge Baru!</h3>
+              <h2 id="newBadgeName">Badge Name</h2>
+              <p id="newBadgeDesc">Deskripsi badge</p>
+            </div>
+            <button class="badge-achievement-close" id="closeBadgeModal">
+              ×
+            </button>
+          </div>
+        </div>
+
+        <!-- Modal Semua Badge -->
+        <div id="allBadgesModal" class="all-badges-modal">
+          <div class="all-badges-content">
+            <div class="all-badges-header">
+              <h2>🏆 Semua Pencapaian Badge</h2>
+              <button class="all-badges-close" id="closeAllBadgesModal">
+                &times;
+              </button>
+            </div>
+            <div class="all-badges-grid" id="allBadgesGrid">
+              <!-- Semua badge akan ditampilkan di sini -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="progress.js"></script>
+  </body>
+</html>
